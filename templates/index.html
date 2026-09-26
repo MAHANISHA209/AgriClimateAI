@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>AgriClimate AI</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f1f8f3;
+        }
+
+        header {
+            background: #2e7d32;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+
+        header p {
+            margin-bottom: 0;
+        }
+
+        nav {
+            background: #1b5e20;
+            text-align: center;
+            padding: 12px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: 30px auto;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+            margin-bottom: 25px;
+        }
+
+        .card h2 {
+            color: #2e7d32;
+            margin-top: 0;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        small {
+            color: #666;
+            font-size: 12px;
+        }
+
+        input {
+            width: 100%;
+            padding: 11px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            font-size: 15px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #2e7d32;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 20px;
+            background: #2e7d32;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1b5e20;
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .result-box {
+            padding: 20px;
+            border-radius: 10px;
+            background: #e8f5e9;
+        }
+
+        .result-box h3 {
+            margin-top: 0;
+            color: #2e7d32;
+        }
+
+        .crop {
+            grid-column: 1 / 3;
+            text-align: center;
+            font-size: 22px;
+        }
+
+        /* AI Dashboard */
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .dashboard-item {
+            padding: 20px;
+            border-radius: 12px;
+            background: #f5f9f5;
+            border: 1px solid #dce8dc;
+        }
+
+        .dashboard-item h3 {
+            margin-top: 0;
+            color: #2e7d32;
+        }
+
+        .dashboard-item p {
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .big-result {
+            font-size: 24px !important;
+            font-weight: bold;
+            color: #1b5e20;
+            margin: 10px 0;
+        }
+
+        .info-box {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 12px;
+            background: #f1f8f3;
+            border-left: 5px solid #2e7d32;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #555;
+        }
+
+        /* Mobile */
+
+        @media (max-width: 600px) {
+
+            .form-grid,
+            .result-grid,
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .crop {
+                grid-column: auto;
+            }
+
+            nav a {
+                display: block;
+                margin: 8px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header>
+
+        <h1>🌱 AgriClimate AI</h1>
+
+        <p>
+            AI-Based Climate-Smart Farming Assistant
+        </p>
+
+    </header>
+
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <a href="#home">🏠 Home</a>
+
+        <a href="#analysis">🌾 Farm Analysis</a>
+
+        <a href="#about">ℹ️ About</a>
+
+    </nav>
+
+
+    <!-- HOME -->
+
+    <div class="container" id="home">
+
+        <div class="card">
+
+            <h2>🌱 Welcome to AgriClimate AI</h2>
+
+            <p>
+                AgriClimate AI is an AI-based climate-smart farming
+                assistant that helps farmers make better farming decisions.
+            </p>
+
+            <p>
+                Enter your soil and environmental information to get
+                a suitable crop recommendation and climate-based advice.
+            </p>
+
+
+            <div class="result-grid">
+
+                <div class="result-box">
+
+                    <h3>🤖 AI Crop Recommendation</h3>
+
+                    <p>
+                        Get a suitable crop recommendation using
+                        soil and climate conditions.
+                    </p>
+
+                </div>
+
+
+                <div class="result-box">
+
+                    <h3>💧 Smart Irrigation</h3>
+
+                    <p>
+                        Receive irrigation guidance based on
+                        rainfall and environmental conditions.
+                    </p>
+
+                </div>
+
+
+                <div class="result-box">
+
+                    <h3>🌦️ Climate Risk</h3>
+
+                    <p>
+                        Identify climate-related risks and
+                        take suitable farming actions.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <a href="#analysis">
+
+                <button type="button">
+                    🌾 Start Farm Analysis
+                </button>
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- MAIN CONTENT -->
+
+    <div class="container">
+
+
+        <!-- FARM ANALYSIS -->
+
+        <div class="card" id="analysis">
+
+            <h2>🧑‍🌾 Farm Information</h2>
+
+
+            <form method="POST">
+
+
+                <!-- LOCATION -->
+
+                <div style="margin-bottom: 15px;">
+
+                    <label>
+                        📍 Farm Location
+                    </label>
+
+                    <input
+                        type="text"
+                        name="location"
+                        placeholder="Example: Karur"
+                        required>
+
+                    <small>
+                        Enter your farm location
+                    </small>
+
+                </div>
+
+
+                <!-- INPUT GRID -->
+
+                <div class="form-grid">
+
+
+                    <!-- N -->
+
+                    <div>
+
+                        <label>
+                            Nitrogen (N)
+                        </label>
+
+                        <input
+                            type="number"
+                            name="N"
+                            min="0"
+                            max="150"
+                            step="any"
+                            required>
+
+                        <small>
+                            Soil nitrogen level
+                        </small>
+
+                    </div>
+
+
+                    <!-- P -->
+
+                    <div>
+
+                        <label>
+                            Phosphorus (P)
+                        </label>
+
+                        <input
+                            type="number"
+                            name="P"
+                            min="0"
+                            max="150"
+                            step="any"
+                            required>
+
+                        <small>
+                            Soil phosphorus level
+                        </small>
+
+                    </div>
+
+
+                    <!-- K -->
+
+                    <div>
+
+                        <label>
+                            Potassium (K)
+                        </label>
+
+                        <input
+                            type="number"
+                            name="K"
+                            min="0"
+                            max="210"
+                            step="any"
+                            required>
+
+                        <small>
+                            Soil potassium level
+                        </small>
+
+                    </div>
+
+
+                    <!-- TEMPERATURE -->
+
+                    <div>
+
+                        <label>
+                            Temperature (°C)
+                        </label>
+
+                        <input
+                            type="number"
+                            name="temperature"
+                            min="-10"
+                            max="60"
+                            step="any"
+                            required>
+
+                        <small>
+                            Temperature in °C
+                        </small>
+
+                    </div>
+
+
+                    <!-- HUMIDITY -->
+
+                    <div>
+
+                        <label>
+                            Humidity (%)
+                        </label>
+
+                        <input
+                            type="number"
+                            name="humidity"
+                            min="0"
+                            max="100"
+                            step="any"
+                            required>
+
+                        <small>
+                            Humidity percentage
+                        </small>
+
+                    </div>
+
+
+                    <!-- PH -->
+
+                    <div>
+
+                        <label>
+                            Soil pH
+                        </label>
+
+                        <input
+                            type="number"
+                            name="ph"
+                            min="0"
+                            max="14"
+                            step="any"
+                            required>
+
+                        <small>
+                            Soil pH value (0–14)
+                        </small>
+
+                    </div>
+
+
+                    <!-- RAINFALL -->
+
+                    <div>
+
+                        <label>
+                            Rainfall (mm)
+                        </label>
+
+                        <input
+                            type="number"
+                            name="rainfall"
+                            min="0"
+                            max="500"
+                            step="any"
+                            required>
+
+                        <small>
+                            Rainfall in mm
+                        </small>
+
+                    </div>
+
+
+                </div>
+
+
+                <button type="submit">
+                    🌾 Analyze Farm
+                </button>
+
+
+            </form>
+
+        </div>
+
+
+        <!-- RESULTS -->
+
+        {% if prediction %}
+
+
+        <!-- CURRENT WEATHER -->
+
+        {% if weather %}
+
+        <div class="card">
+
+            <h2>🌦️ Current Weather</h2>
+
+
+            <div class="result-grid">
+
+
+                <div class="result-box">
+
+                    <h3>📍 Location</h3>
+
+                    <p>
+                        {{ weather.location }}
+                    </p>
+
+                </div>
+
+
+                <div class="result-box">
+
+                    <h3>🌡️ Temperature</h3>
+
+                    <p>
+                        {{ weather.temperature }} °C
+                    </p>
+
+                </div>
+
+
+                <div class="result-box">
+
+                    <h3>💧 Humidity</h3>
+
+                    <p>
+                        {{ weather.humidity }} %
+                    </p>
+
+                </div>
+
+
+                <div class="result-box">
+
+                    <h3>🌧️ Precipitation</h3>
+
+                    <p>
+                        {{ weather.precipitation }} mm
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+        {% endif %}
+
+
+        <!-- LIVE WEATHER ADVISORY -->
+
+        {% if weather_advice %}
+
+        <div class="card">
+
+            <h2>🌦️ Live Weather Advisory</h2>
+
+
+            <div class="result-box">
+
+                <h3>
+                    📢 Current Weather Advice
+                </h3>
+
+                <p>
+                    {{ weather_advice }}
+                </p>
+
+            </div>
+
+        </div>
+
+        {% endif %}
+
+
+        <!-- AI FARM ANALYSIS -->
+
+        <div class="card">
+
+            <h2>🤖 AI Farm Analysis</h2>
+
+
+            <div class="dashboard-grid">
+
+
+                <!-- CROP -->
+
+                <div class="dashboard-item">
+
+                    <h3>
+                        🌾 Recommended Crop
+                    </h3>
+
+                    <p class="big-result">
+                        {{ prediction }}
+                    </p>
+
+                    <small>
+                        Based on soil and environmental conditions
+                    </small>
+
+                </div>
+
+
+                <!-- CONFIDENCE -->
+
+                <div class="dashboard-item">
+
+                    <h3>
+                        🎯 AI Confidence
+                    </h3>
+
+                    <p class="big-result">
+                        {{ confidence }}%
+                    </p>
+
+                    <small>
+                        Random Forest model probability
+                    </small>
+
+                </div>
+
+
+                <!-- IRRIGATION -->
+
+                <div class="dashboard-item">
+
+                    <h3>
+                        💧 Irrigation Guidance
+                    </h3>
+
+                    <p>
+                        {{ irrigation }}
+                    </p>
+
+                </div>
+
+
+                <!-- CLIMATE -->
+
+                <div class="dashboard-item">
+
+                    <h3>
+                        🌡️ Climate Risk
+                    </h3>
+
+                    <p>
+                        {{ climate_risk }}
+                    </p>
+
+                </div>
+
+
+                <!-- DISEASE -->
+
+                <div class="dashboard-item">
+
+                    <h3>
+                        🦠 Disease Risk Indicator
+                    </h3>
+
+                    <p>
+                        {{ disease_risk }}
+                    </p>
+
+                </div>
+
+
+                <!-- ACTION -->
+
+                <div class="dashboard-item">
+
+                    <h3>
+                        🌱 Suggested Action
+                    </h3>
+
+                    <p>
+                        {{ action }}
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+           <!-- CROP INFORMATION -->
+
+<div class="info-box">
+
+    <h3>
+        📌 {{ prediction|capitalize }} - Crop Information
+    </h3>
+
+    <p>
+        <strong>💧 Water Management:</strong>
+        {{ crop_water }}
+    </p>
+
+    <p>
+        <strong>🌦️ Climate Information:</strong>
+        {{ crop_climate }}
+    </p>
+
+    <p>
+        <strong>🌱 Farming Tip:</strong>
+        {{ crop_tip }}
+    </p>
+
+</div>
+
+        <!-- ABOUT -->
+
+        <div class="card" id="about">
+
+            <h2>
+                ℹ️ About AgriClimate AI
+            </h2>
+
+
+            <p>
+
+                AgriClimate AI is a climate-smart farming assistant
+                designed to help farmers make better crop decisions
+                using soil and environmental information.
+
+            </p>
+
+
+            <p>
+
+                The system uses a Machine Learning model to recommend
+                a suitable crop based on nitrogen, phosphorus, potassium,
+                temperature, humidity, soil pH and rainfall.
+
+            </p>
+
+
+            <p>
+
+                It also provides irrigation advice, climate-risk
+                indication, disease-risk indication and suggested
+                farming actions.
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        AgriClimate AI | Climate-Smart Agriculture 🌍
+
+    </footer>
+    {% endif %}
+
+
+</body>
+
+</html>

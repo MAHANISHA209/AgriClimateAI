@@ -1,0 +1,386 @@
+/* =========================================
+   AgriClimate AI - Main Styles
+   ========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f8f5;
+    color: #26332a;
+    line-height: 1.6;
+}
+
+/* =========================================
+   Header
+   ========================================= */
+
+header {
+    background: linear-gradient(135deg, #1b5e20, #2e7d32);
+    color: white;
+    padding: 25px 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 32px;
+}
+
+header p {
+    margin: 6px 0 0;
+    font-size: 16px;
+}
+
+/* =========================================
+   Navigation
+   ========================================= */
+
+nav {
+    background: #ffffff;
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #dce5dc;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav a {
+    text-decoration: none;
+    color: #2e7d32;
+    font-weight: bold;
+    margin: 0 15px;
+}
+
+nav a:hover {
+    color: #1b5e20;
+}
+
+/* =========================================
+   Main Container
+   ========================================= */
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 30px auto;
+}
+
+/* =========================================
+   Welcome Section
+   ========================================= */
+
+.welcome-card {
+    background: white;
+    padding: 28px;
+    border-radius: 16px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.welcome-card h2 {
+    color: #1b5e20;
+    margin-top: 0;
+}
+
+/* =========================================
+   General Card
+   ========================================= */
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 16px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.card h2,
+.card h3 {
+    color: #2e7d32;
+}
+
+/* =========================================
+   Form
+   ========================================= */
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 7px;
+    color: #344238;
+}
+
+.form-group input {
+    padding: 12px;
+    border: 1px solid #cfd8cf;
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+}
+
+.form-group input:focus {
+    border-color: #2e7d32;
+    box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.12);
+}
+
+/* =========================================
+   Analyze Button
+   ========================================= */
+
+button,
+.submit-btn {
+    width: 100%;
+    margin-top: 20px;
+    padding: 14px;
+    border: none;
+    border-radius: 9px;
+    background: #2e7d32;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover,
+.submit-btn:hover {
+    background: #1b5e20;
+    transform: translateY(-1px);
+}
+
+/* =========================================
+   Weather Section
+   ========================================= */
+
+.weather-card {
+    background: linear-gradient(135deg, #e8f5e9, #f5fbf5);
+    padding: 22px;
+    border-radius: 15px;
+    margin-top: 20px;
+    border: 1px solid #d5e8d5;
+}
+
+.weather-card h2,
+.weather-card h3 {
+    color: #1b5e20;
+}
+
+.weather-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.weather-item {
+    background: white;
+    padding: 18px;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid #dce8dc;
+}
+
+.weather-item h3 {
+    margin: 0;
+    font-size: 15px;
+}
+
+.weather-item p {
+    margin: 8px 0 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* =========================================
+   Live Weather Advisory
+   ========================================= */
+
+.advisory-box {
+    margin-top: 20px;
+    padding: 18px;
+    border-radius: 12px;
+    background: #fffde7;
+    border-left: 5px solid #f9a825;
+}
+
+.advisory-box h3 {
+    margin-top: 0;
+    color: #8d6e00;
+}
+
+/* =========================================
+   AI Dashboard
+   ========================================= */
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-top: 20px;
+}
+
+.dashboard-item {
+    padding: 22px;
+    border-radius: 14px;
+    background: #f5f9f5;
+    border: 1px solid #dce8dc;
+}
+
+.dashboard-item h3 {
+    margin-top: 0;
+    color: #2e7d32;
+}
+
+.dashboard-item p {
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* =========================================
+   Recommended Crop
+   ========================================= */
+
+.big-result {
+    font-size: 28px !important;
+    font-weight: bold;
+    color: #1b5e20;
+    margin: 10px 0;
+    text-transform: capitalize;
+}
+
+/* =========================================
+   Crop Information
+   ========================================= */
+
+.info-box {
+    margin-top: 22px;
+    padding: 22px;
+    border-radius: 14px;
+    background: #f1f8f3;
+    border-left: 5px solid #2e7d32;
+}
+
+.info-box h3 {
+    margin-top: 0;
+    color: #1b5e20;
+}
+
+.info-box p {
+    margin: 10px 0;
+}
+
+/* =========================================
+   Error Message
+   ========================================= */
+
+.error-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-top: 20px;
+    padding: 18px;
+    border-radius: 12px;
+    background: #fff4f4;
+    border: 1px solid #ffcaca;
+    border-left: 5px solid #d32f2f;
+}
+
+.error-icon {
+    font-size: 28px;
+}
+
+.error-box h3 {
+    margin: 0 0 6px 0;
+    color: #c62828;
+}
+
+.error-box p {
+    margin: 5px 0;
+    line-height: 1.5;
+}
+
+.error-help {
+    font-size: 14px;
+    color: #666;
+}
+
+/* =========================================
+   Footer
+   ========================================= */
+
+footer {
+    margin-top: 40px;
+    padding: 25px;
+    background: #1b5e20;
+    color: white;
+    text-align: center;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+/* =========================================
+   Mobile Responsive Design
+   ========================================= */
+
+@media (max-width: 700px) {
+
+    header h1 {
+        font-size: 25px;
+    }
+
+    .container {
+        width: 94%;
+        margin: 20px auto;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .weather-grid {
+        grid-template-columns: 1fr;
+    }
+
+    nav a {
+        margin: 0 7px;
+        font-size: 14px;
+    }
+
+    .card,
+    .welcome-card {
+        padding: 18px;
+    }
+
+    .big-result {
+        font-size: 24px !important;
+    }
+
+    .error-box {
+        padding: 15px;
+    }
+}
